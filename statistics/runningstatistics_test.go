@@ -3,7 +3,7 @@ package statistics
 import (
 	"testing"
 
-	"bitbucket.org/JosefCS/go-math/equality"
+	"github.com/josefcs/go-math/equality"
 )
 
 type testsetdata struct {
