@@ -83,3 +83,15 @@ func SetEqual(a, b []string) bool {
 
 	return StrictlyEqual(setA, setB)
 }
+
+// Contains checks if s is contained in set.
+// Returns true if it is contained, false if not
+func Contains(s string, set []string) bool {
+	for _, t := range set {
+		if t == s {
+			return true
+		}
+	}
+
+	return false
+}

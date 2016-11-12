@@ -62,6 +62,28 @@ func TestMissing(t *testing.T) {
 	}
 }
 
+func TestContains(t *testing.T) {
+	data := []struct {
+		element string
+		set     []string
+		want    bool
+	}{
+		{"a", []string{"c", "f", "ab"}, false},
+		{"a", []string{"c", "f", "a"}, true},
+		{"a", []string{"c", "", "ab"}, false},
+		{"ab", []string{"c", "f", ""}, false},
+		{"a", []string{"a", "f", "ab"}, true},
+		{"", []string{"a", "f", "ab"}, false},
+		{"", []string{"a", "f", "ab", ""}, true},
+	}
+
+	for _, val := range data {
+		if result := Contains(val.element, val.set); result != val.want {
+			t.Errorf("Fail: Contains('%s', %+v) should be %+v", val.element, val.set, val.want)
+		}
+	}
+}
+
 func BenchmarkIntersectSmall(b *testing.B) {
 	set1 := []string{"a", "b", "c", "d"}
 	set2 := []string{"a", "b", "c"}
